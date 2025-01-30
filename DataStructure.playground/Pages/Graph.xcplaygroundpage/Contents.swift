@@ -1,5 +1,5 @@
 class Graph {
-    private var adjList = [Int: [Int]]()
+    var adjList = [Int: [Int]]()
     
     func addEdge(_ from: Int, _ to: Int) {
         adjList[from, default: []].append(to)
@@ -21,6 +21,23 @@ class Graph {
             }
         }
     }
+    
+    // DFS
+    func dfs(start: Int) {
+        var visited = Set<Int>()
+        dfsHelper(node: start, visited: &visited)
+    }
+    
+    func dfsHelper(node: Int, visited: inout Set<Int>) {
+        guard !visited.contains(node) else { return }
+        
+        print(node)
+        visited.insert(node)
+        
+        for neighbor in adjList[node] ?? [] {
+            dfsHelper(node: neighbor, visited: &visited)
+        }
+    }
 }
 
 let graph = Graph()
@@ -31,4 +48,11 @@ graph.addEdge(1, 4)
 graph.addEdge(2, 5)
 graph.addEdge(2, 6)
 
+print(graph.adjList)
+print("---")
 graph.bfs(start: 0)
+print("---")
+graph.dfs(start: 0)
+
+// Use BFS when searching for the shortest path or when the solution is close to the root. QUEUE
+// Use DFS when dealing with deep recursion-based problems, cycle detection, or topological sorting. 
