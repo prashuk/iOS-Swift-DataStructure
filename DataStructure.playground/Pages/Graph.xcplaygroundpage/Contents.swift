@@ -3,7 +3,7 @@ class Graph {
     
     func addEdge(_ from: Int, _ to: Int) {
         adjList[from, default: []].append(to)
-        adjList[to, default: []].append(from) // remove for directed graph
+        // adjList[to, default: []].append(from) // remove for directed graph
     }
     
     // BFS
