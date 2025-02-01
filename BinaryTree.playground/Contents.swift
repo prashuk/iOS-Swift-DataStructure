@@ -22,7 +22,7 @@ class BinaryTree {
         
     }
     
-    func 
+    func
 }
 
 let tree = BinaryTree()
@@ -31,3 +31,4 @@ tree.root?.left = Node(2)
 tree.root?.right = Node(3)
 tree.root?.left?.left = Node(4)
 tree.root?.left?.right = Node(5)
+
