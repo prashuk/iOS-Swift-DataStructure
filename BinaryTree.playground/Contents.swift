@@ -59,7 +59,7 @@ class BinaryTree {
         return order
     }
     
-    func zigZagOrder(_ node: Node?) -> [[Int]] {
+    func zigZagOrder(_ node: Node?) -> [[Int]] { // BFS
         guard let node else { return [] }
         
         var queue: [Node] = [node]
