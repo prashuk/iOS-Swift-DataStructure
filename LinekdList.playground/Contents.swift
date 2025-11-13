@@ -1,7 +1,3 @@
-import UIKit
-
-var greeting = "Hello, playground"
-
 class Node {
     var val: Int
     var next: Node?

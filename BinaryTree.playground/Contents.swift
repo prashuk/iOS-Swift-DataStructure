@@ -21,11 +21,44 @@ class BinaryTree {
         inOrder(node.right)
     }
     
+    func inOrderIterative(_ node: Node?) {
+        var stack = [Node]()
+        var current = node
+        
+        while current != nil || !stack.isEmpty {
+            while let n = current {
+                stack.append(n)
+                current = n.left
+            }
+            let n = stack.removeLast()
+            print(n.val, terminator: " ")
+            current = n.right
+        }
+    }
+    
     func preOrder(_ node: Node?) {
         guard let node else { return }
         print(node.val, terminator: " ")
         preOrder(node.left)
         preOrder(node.right)
+    }
+    
+    func preOrderIterative(_ node: Node?) {
+        guard let node else { return }
+        
+        var stack = [Node]()
+        stack.append(node)
+        
+        while !stack.isEmpty {
+            let current = stack.removeLast()
+            print(current.val, terminator: " ")
+            if let right = current.right {
+                stack.append(right)
+            }
+            if let left = current.left {
+                stack.append(left)
+            }
+        }
     }
     
     func postOrder(_ node: Node?) {
@@ -35,6 +68,8 @@ class BinaryTree {
         print(node.val, terminator: " ")
     }
     
+    // BFS
+    // Use of queue
     func levelOrder(_ node: Node?) -> [[Int]] { // BFS
         guard let node else { return [] }
         
